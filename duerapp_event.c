@@ -3,6 +3,7 @@
 
 #include "duerapp_event.h"
 #include "duerapp_record.h"
+#include "duerapp_media.h"
 
 void duerapp_event_loop(void)
 {
@@ -29,11 +30,20 @@ void duerapp_event_loop(void)
 		case KBDEVT_RECORD:
 			duerapp_record_capture_onoff();
 			break;
+		case KBDEVT_PAUSE_RESUME:
+			duerapp_media_audio_onoff();
+			break;
+		case KBDEVT_LAST_SONG:
+			duerapp_media_audio_last();
+			break;
+		case KBDEVT_NEXT_SONG:
+			duerapp_media_audio_next();
+			break;
 		case KBDEVT_QUIT:
-			printf("\n");
 			loop = false;
 			break;
 		}
+		printf("\n");
 	}
 
 	tcsetattr(STDIN_FILENO, TCSANOW, &kbd_bak);

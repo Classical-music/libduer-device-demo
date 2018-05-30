@@ -20,7 +20,10 @@ enum
 typedef struct
 {
 	int state;
+	int laststate;
+	const char *name;
 	const char *url;
+	int offset;
 	bool mute;
 	float volume;
 	GMainLoop *loop;
@@ -44,9 +47,17 @@ void duerapp_media_audio_player(const char *);
 
 void duerapp_media_audio_pause(void);
 
-void duerapp_media_audio_resume(void);
+void duerapp_media_audio_resume(const char *, int);
 
 void duerapp_media_audio_stop(void);
+
+int duerapp_media_audio_get_position(void);
+
+void duerapp_media_audio_onoff(void);
+
+void duerapp_media_audio_last(void);
+
+void duerapp_media_audio_next(void);
 
 #ifdef _cplusplus
 }

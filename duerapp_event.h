@@ -10,8 +10,11 @@ extern "C" {
 
 enum
 {
-	KBDEVT_RECORD = 'r',
-	KBDEVT_QUIT   = 'q',
+	KBDEVT_RECORD		= 'r',
+	KBDEVT_PAUSE_RESUME	= 's',
+	KBDEVT_NEXT_SONG	= 'f',
+	KBDEVT_LAST_SONG	= 'd',
+	KBDEVT_QUIT			= 'q',
 };
 
 void duerapp_event_loop(void);

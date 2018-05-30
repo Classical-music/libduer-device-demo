@@ -234,11 +234,9 @@ void duerapp_record_capture_onoff(void)
 	if (s_record_config->state == RECORD_UNCAPTURE) {
 		// 暂停媒体
 		duerapp_media_speak_stop();
-		duerapp_media_audio_pause();
+		//duerapp_media_audio_pause();
 		duerapp_record_turn_state(s_record_config, RECORD_CAPTURE);
 	} else if (s_record_config->state == RECORD_CAPTURE) {
 		duerapp_record_turn_state(s_record_config, RECORD_UNCAPTURE);
-		// 恢复媒体
-		duerapp_media_audio_resume();
 	}
 }

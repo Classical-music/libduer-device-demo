@@ -154,6 +154,29 @@ void duer_dcs_audio_play_handler(const duer_dcs_audio_info_t * audio_info)
 	DUER_LOGI("hujie EXIT %s:%d url:%s\n", __func__, __LINE__, audio_info->url);
 }
 
+void duer_dcs_audio_resume_handler(const duer_dcs_audio_info_t * audio_info)
+{
+	DUER_LOGI("hujie ENTER %s:%d url:%s, offset:%d\n", __func__, __LINE__, audio_info->url, audio_info->offset);
+	duerapp_media_audio_resume(audio_info->url, audio_info->offset);
+	DUER_LOGI("hujie EXIT %s:%d url:%s, offset:%d\n", __func__, __LINE__, audio_info->url, audio_info->offset);
+}
+
+void duer_dcs_audio_pause_handler(void)
+{
+	DUER_LOGI("hujie ENTER %s:%d \n", __func__, __LINE__);
+	duerapp_media_audio_pause();
+	DUER_LOGI("hujie EXIT %s:%d \n", __func__, __LINE__);
+}
+
+int duer_dcs_audio_get_play_progress(void)
+{
+	int pos;
+	DUER_LOGI("hujie ENTER %s:%d \n", __func__, __LINE__);
+	pos = duerapp_media_audio_get_position();
+	DUER_LOGI("hujie EXIT %s:%d \n", __func__, __LINE__);
+	return pos;
+}
+
 duer_status_t duer_dcs_render_card_handler(baidu_json * payload)
 {
 	printf("hujie %s:%d \n", __func__, __LINE__);
